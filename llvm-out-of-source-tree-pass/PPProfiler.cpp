@@ -60,6 +60,11 @@ void RegisterCB(PassBuilder &PB) {
         }
         return false;
       });
+/* For adding pass into clang */
+  PB.registerPipelineStartEPCallback(
+      [](ModulePassManager &MPM, OptimizationLevel Level) {
+        MPM.addPass(PPProfilerIRPass());
+      });
 }
 
 // For Static Linking

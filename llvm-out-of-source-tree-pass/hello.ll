@@ -24,4 +24,4 @@ attributes #1 = { nofree nounwind "no-trapping-math"="true" "stack-protector-buf
 !1 = !{i32 8, !"PIC Level", i32 2}
 !2 = !{i32 7, !"PIE Level", i32 2}
 !3 = !{i32 7, !"uwtable", i32 2}
-!4 = !{!"clang version 20.0.0git (https://github.com/llvm/llvm-project.git 95c0e03376a4699c38cd3e37a3b6fdad0549cd52)"}
+!4 = !{!"clang version 20.0.0git (https://github.com/llvm/llvm-project.git bfa8519bbb48942648c9ca58d2380b48313894d1)"}

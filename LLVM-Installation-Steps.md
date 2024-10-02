@@ -40,7 +40,7 @@
    which can be loaded dynamically while loading the pass.
 
 5. Finally, compile and install LLVM.
-   cmake --build build / ninja -j32
+   cmake --build build / cd build && ninja -j32
    This will compile llvm, clang and lld.
 
    After building all, to check all are working as expected or not, use:
@@ -76,6 +76,14 @@ Building the plugin:
 You have hello.ll in ~/llvm-tutorial/llvm-trial folder and now test with opt:
 opt -load-pass-plugin ./build/libPPProfilerPass.so -passes=ppprofiler -S hello.ll -o output.ll
 
+You can pass more than one passes to opt:
+opt -load-pass-plugin ./build/libPPProfilerPass.so -passes="ppprofiler,default<O2>" -S hello.ll -o output.ll
+
+7. You can link your pass to clang in the following way:
+   1. Add registerPipelineStartEpCallBack() to registerCB() function in .cpp file.
+   2. Compile the .c file with clang and -fpass-plugin option => generates a.out.
+      ==> clang -fpass-plugin=./build/libPPProfilerPass.so hello.c
+   3. Run the a.out: ./a.out
 
 Implementing a new pass as a plugin is useful if you plan to use it with a precompiled clang, for example.
 On the other hand, if you write your own compiler, then there can be good reasons to add your new passes directly to the LLVM source tree. 
